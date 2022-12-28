@@ -112,12 +112,13 @@ class Maze:
         self.__create_cells()
 
     def __create_cells(self):
-        for r in range(self.__num_rows):
-            col = []
-            for c in range(self.__num_cols):
-                x1, y1, x2, y2, = self.__calc_pos(self.__x1, self.__y1, self.__cell_size_x, self.__cell_size_y, r, c)
-                col.append(Cell(x1, y1, x2, y2, self.__win))
-            self.__cells.append(col)
+        for r in range(self.__num_cols):
+            row = []
+            for c in range(self.__num_rows):
+                x1, y1, x2, y2, = self.__calc_pos(self.__x1, self.__y1, 
+                    self.__cell_size_x, self.__cell_size_y, r, c)
+                row.append(Cell(x1, y1, x2, y2, self.__win))
+            self.__cells.append(row)
         
         for row in self.__cells:
             for cell in row:
@@ -128,7 +129,8 @@ class Maze:
             self, maze_x, maze_y,
             cell_size_x, cell_size_y,
             cell_row, cell_col):
-        x1 = cell_size_x * (cell_row + 1) + maze_x - cell_size_x # these are so dirty
+        x1 = cell_size_x * (cell_row + 1) + maze_x - cell_size_x 
+        # these minuses are so dirty
         y1 = cell_size_y * (cell_col + 1) + maze_y - cell_size_y
         x2 = x1 + cell_size_x
         y2 = y1 + cell_size_y
