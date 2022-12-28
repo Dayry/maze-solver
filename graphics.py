@@ -4,7 +4,6 @@ from tkinter import Tk, BOTH, Canvas
 class Window:
 
     def __init__(self, width, height):
-        """Creates new window with given dimenstions"""
         self.__root = Tk()
         self.__root.protocol("WM_DELETE_WINDOW", self.close)
         self.__root.title("Maze Solver")
@@ -46,3 +45,33 @@ class Line:
             self.a.x, self.a.y, self.b.x, self.b.y, fill=fill_colour, width=2
         )
         canvas.pack()
+
+
+class Cell:
+
+    def __init__(self, x1, y1, x2, y2, win):
+        self.__x1 = x1
+        self.__x2 = x2
+        self.__y1 = y1
+        self.__y2 = y2
+        self.__win = win
+        self.has_left_wall = True
+        self.has_right_wall = True
+        self.has_top_wall = True
+        self.has_bottom_wall = True
+
+    def draw(self): #top_left_x, top_left_y, bottom_right_x, bottom_right_y
+        if self.has_left_wall:
+            left_wall = Line(Point(self.__x1, self.__y1), Point(self.__x1, self.__y2))
+            self.__win.draw_line(left_wall, "black")
+        if self.has_right_wall:
+            right_wall = Line(Point(self.__x2, self.__y1), Point(self.__x2, self.__y2))
+            self.__win.draw_line(right_wall, "black")
+        if self.has_top_wall:
+            top_wall = Line(Point(self.__x1, self.__y1), Point(self.__x2, self.__y1))
+            self.__win.draw_line(top_wall, "black")
+        if self.has_bottom_wall:
+            bottom_wall = Line(Point(self.__x1, self.__y2), Point(self.__x2, self.__y2))
+            self.__win.draw_line(bottom_wall, "black")
+        
+
