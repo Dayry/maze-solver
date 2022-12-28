@@ -1,3 +1,4 @@
+import time
 from tkinter import Tk, BOTH, Canvas
 
 
@@ -113,16 +114,17 @@ class Maze:
 
     def __create_cells(self):
         for r in range(self.__num_cols):
-            row = []
+            col = []
             for c in range(self.__num_rows):
                 x1, y1, x2, y2, = self.__calc_pos(self.__x1, self.__y1, 
                     self.__cell_size_x, self.__cell_size_y, r, c)
-                row.append(Cell(x1, y1, x2, y2, self.__win))
-            self.__cells.append(row)
+                col.append(Cell(x1, y1, x2, y2, self.__win))
+            self.__cells.append(col)
         
-        for row in self.__cells:
-            for cell in row:
+        for col in self.__cells:
+            for cell in col:
                 cell.draw()
+                self.__animate()
 
 
     def __calc_pos(
@@ -136,6 +138,11 @@ class Maze:
         y2 = y1 + cell_size_y
 
         return x1, y1, x2, y2
+
+
+    def __animate(self):
+        self.__win.redraw()
+        time.sleep(0.05)
     
 
     

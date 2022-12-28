@@ -21,7 +21,7 @@ def main():
     cell2.draw_move(cell3, True)"""
 
     # Maze test
-    maze = Maze(10, 10, 6, 4, 60, 50, win)
+    maze = Maze(20, 20, 6, 6, 50, 50, win)
 
 
     win.wait_for_close()
