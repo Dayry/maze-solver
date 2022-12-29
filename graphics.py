@@ -62,18 +62,27 @@ class Cell:
 
     def draw(self): #top_left_x, top_left_y, bottom_right_x, bottom_right_y
         if self._win:
+            left_wall = Line(Point(self._x1, self._y1), Point(self._x1, self._y2))
+            right_wall = Line(Point(self._x2, self._y1), Point(self._x2, self._y2))
+            top_wall = Line(Point(self._x1, self._y1), Point(self._x2, self._y1))
+            bottom_wall = Line(Point(self._x1, self._y2), Point(self._x2, self._y2))
+
             if self.has_left_wall:
-                left_wall = Line(Point(self._x1, self._y1), Point(self._x1, self._y2))
                 self._win.draw_line(left_wall, "black")
+            else:
+                self._win.draw_line(left_wall, "white")
             if self.has_right_wall:
-                right_wall = Line(Point(self._x2, self._y1), Point(self._x2, self._y2))
                 self._win.draw_line(right_wall, "black")
+            else:
+                self._win.draw_line(right_wall, "white")
             if self.has_top_wall:
-                top_wall = Line(Point(self._x1, self._y1), Point(self._x2, self._y1))
                 self._win.draw_line(top_wall, "black")
+            else:
+                self._win.draw_line(top_wall, "white")
             if self.has_bottom_wall:
-                bottom_wall = Line(Point(self._x1, self._y2), Point(self._x2, self._y2))
                 self._win.draw_line(bottom_wall, "black")
+            else:
+                self._win.draw_line(bottom_wall, "white")
 
     # move (draw a line) from center of self to center of to_cell
     def draw_move(self, to_cell, undo=False):
