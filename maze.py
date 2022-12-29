@@ -58,3 +58,8 @@ class Maze:
     def _animate(self):
         self._win.redraw()
         time.sleep(0.05)
+
+    def _break_entrance_and_exit(self):
+        print("yip")
+        # entrance always at top of top-left cell so set to false
+        # exit always at bottom on bottom-right cell so set to false
