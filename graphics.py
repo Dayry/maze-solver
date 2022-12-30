@@ -59,6 +59,7 @@ class Cell:
         self.has_right_wall = True
         self.has_top_wall = True
         self.has_bottom_wall = True
+        self.visited = False
 
     def draw(self): #top_left_x, top_left_y, bottom_right_x, bottom_right_y
         if self._win:
