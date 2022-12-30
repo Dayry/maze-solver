@@ -25,7 +25,7 @@ class Maze:
 
         self._create_cells()
         self._break_entrance_and_exit()
-        self._break_walls_r(0,0) # start in entrance cell
+        self._break_walls_r(0, 0) # start in entrance cell
 
     def _create_cells(self):
         for r in range(self._num_cols):
@@ -69,55 +69,55 @@ class Maze:
         exit_cell.has_bottom_wall = False
         exit_cell.draw()
 
-    def _break_walls_r(self, x, y): #x is col, y is index in given col
+    def _break_walls_r(self, x, y): # x is col, y is index in given col
         self._cells[x][y].visited = True
         possible_paths = []
         for adjacent in self._find_adjacent_cells(x, y):
             if adjacent is not None:
                 if self._cells[adjacent[0]][adjacent[1]].visited == False:
-                    possible_paths.append[adjacent]
+                    possible_paths.append(adjacent)
         
         if len(possible_paths) < 1:
-            curr_cell.draw()
+            self._cells[x][y].draw()
             return
         else:
-            rand = 1 # make random
-            next_x = possible_paths[random][0]
-            next_y = possible_paths[random][1]
-            next_pos = possible_paths[random][2]
-            
-            if next_pos == 0: # next cell is above
-                self._cells[x, y].has_top_wall = False
-                self._cells[x, y].draw()
-                self._cells[next_x, next_y].has_bottom_wall = False
-                self._cells[next_x, next_y].draw()
-            if next_pos == 1: # next cell is below
-                self._cells[x, y].has_bottom_wall = False
-                self._cells[x, y].draw()
-                self._cells[next_x, next_y].has_top_wall = False
-                self._cells[next_x, next_y].draw()
-            if next_pos == 2: # next cell is left
-                self._cells[x, y].has_left_wall = False
-                self._cells[x, y].draw()
-                self._cells[next_x, next_y].has_right_wall = False
-                self._cells[next_x, next_y].draw()
-            if next_pos == 3: # next cell is right
-                self._cells[x, y].has_right_wall = False
-                self._cells[x, y].draw()
-                self._cells[next_x, next_y].has_left_wall = False
-                self._cells[next_x, next_y].draw()
+            rand = 0 # make random
+            next_x = possible_paths[rand][0]
+            next_y = possible_paths[rand][1]
+            next_pos = possible_paths[rand][2]
 
-            self._break_walls_r(next_x. next_y)
+            if next_pos == 0: # next cell is above
+                self._cells[x][y].has_top_wall = False
+                self._cells[x][y].draw()
+                self._cells[next_x][next_y].has_bottom_wall = False
+                self._cells[next_x][next_y].draw()
+            if next_pos == 1: # next cell is below
+                self._cells[x][y].has_bottom_wall = False
+                self._cells[x][y].draw()
+                self._cells[next_x][next_y].has_top_wall = False
+                self._cells[next_x][next_y].draw()
+            if next_pos == 2: # next cell is left
+                self._cells[x][y].has_left_wall = False
+                self._cells[x][y].draw()
+                self._cells[next_x][next_y].has_right_wall = False
+                self._cells[next_x][next_y].draw()
+            if next_pos == 3: # next cell is right
+                self._cells[x][y].has_right_wall = False
+                self._cells[x][y].draw()
+                self._cells[next_x][next_y].has_left_wall = False
+                self._cells[next_x][next_y].draw()
+
+            self._break_walls_r(next_x, next_y)
     
     def _find_adjacent_cells(self, x, y):
         adjacent_cells = [None, None, None, None]
         if y - 1 >= 0: # top
             adjacent_cells[0] = [x, y-1, 0]
-        if y + 1 < self._num_cols: # bottom
+        if y + 1 < self._num_rows: # bottom
             adjacent_cells[1] = [x, y+1, 1]
         if x - 1 >= 0: # left
             adjacent_cells[2] = [x-1, y, 2]
-        if x + 1 < self._num_rows: # right
+        if x + 1 < self._num_cols: # right
             adjacent_cells[3] = [x+1, y, 3]
         
         return adjacent_cells

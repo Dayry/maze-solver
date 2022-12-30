@@ -23,11 +23,12 @@ def main():
     cell1.draw_move(cell2)
     cell2.draw_move(cell3, True)"""
 
-    rows = 10
-    cols = 7
+    rows = 5
+    cols = 6
     maze = Maze(20, 20, rows, cols, 50, 50, win)
     a = maze._cells[cols-1][rows-1]
     b = maze._cells[0][0]
+
 
 
     win.wait_for_close()
