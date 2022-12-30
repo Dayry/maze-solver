@@ -25,7 +25,7 @@ def main():
 
     rows = 5
     cols = 6
-    maze = Maze(20, 20, rows, cols, 50, 50, win)
+    maze = Maze(20, 20, rows, cols, 50, 50, win, 0)
     a = maze._cells[cols-1][rows-1]
     b = maze._cells[0][0]
 

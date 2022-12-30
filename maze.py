@@ -1,4 +1,4 @@
-import time
+import time, random
 from graphics import Cell
 
 class Maze:
@@ -11,7 +11,8 @@ class Maze:
             num_cols,
             cell_size_x,
             cell_size_y,
-            win=None):
+            win=None,
+            seed=None):
         if num_cols < 1:
             raise Exception("Must be at least one column") 
         self._x1 = x1
@@ -22,6 +23,9 @@ class Maze:
         self._cell_size_y = cell_size_y
         self._win = win
         self._cells = []
+
+        if seed is not None:
+            random.seed(seed)
 
         self._create_cells()
         self._break_entrance_and_exit()
@@ -81,7 +85,7 @@ class Maze:
             self._cells[x][y].draw()
             return
         else:
-            rand = 0 # make random
+            rand = random.randint(0, len(possible_paths)-1)
             next_x = possible_paths[rand][0]
             next_y = possible_paths[rand][1]
             next_pos = possible_paths[rand][2]
