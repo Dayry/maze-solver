@@ -3,7 +3,7 @@ from maze import Maze
 
 
 def main():
-    win = Window(800,600)
+    win = Window(1000,1000)
 
     """
     # Drawing tests
@@ -23,10 +23,10 @@ def main():
     cell1.draw_move(cell2)
     cell2.draw_move(cell3, True)"""
 
-    rows = 10
-    cols = 10
+    rows = 12
+    cols = 12
     seed = 0
-    maze = Maze(20, 20, rows, cols, 50, 50, win, seed)
+    maze = Maze(20, 20, rows, cols, 50, 50, win)
 
 
 
