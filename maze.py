@@ -30,6 +30,7 @@ class Maze:
         self._create_cells()
         self._break_entrance_and_exit()
         self._break_walls()
+        self._reset_cells_visited()
 
     def _create_cells(self):
         for r in range(self._num_cols):
@@ -138,3 +139,9 @@ class Maze:
             adjacent_cells[3] = [x+1, y, 3]
         
         return adjacent_cells
+
+    def _reset_cells_visited(self):
+        for col in self._cells:
+            for cell in col:
+                cell.visited = False
+        # use Unittests to test it
