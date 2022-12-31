@@ -23,8 +23,8 @@ def main():
     cell1.draw_move(cell2)
     cell2.draw_move(cell3, True)"""
 
-    rows = 10
-    cols = 9
+    rows = 4
+    cols = 4
     seed = 0
     maze = Maze(20, 20, rows, cols, 50, 50, win, seed)
 
