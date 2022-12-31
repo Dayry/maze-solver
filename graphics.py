@@ -94,9 +94,9 @@ class Cell:
             to_cell_mid_y = to_cell._y1 + (to_cell._y2 - to_cell._y1)/2
             self_center = Point(self_mid_x, self_mid_y)
             to_cell_center = Point(to_cell_mid_x, to_cell_mid_y)
-            line_colour = "red"
+            line_colour = "blue"
             if undo:
-                line_colour = "gray"
+                line_colour = "red"
             movement = Line(self_center, to_cell_center)
             self._win.draw_line(movement, line_colour)
 
